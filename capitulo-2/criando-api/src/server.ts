@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/cateogires", categoriesRoutes);
+app.use("/categories", categoriesRoutes);
 
 app.get("/", (request, response) => {
   response.json({

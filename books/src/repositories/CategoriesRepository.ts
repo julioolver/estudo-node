@@ -21,7 +21,17 @@ class CategoriesRepository {
       date: new Date(),
     });
 
-    this.categories.push(category)
+    this.categories.push(category);
+  }
+
+  list(): Category[] {
+    return this.categories;
+  }
+
+  findByField(field: string, value: string): Category | undefined {
+    const categoryKey = field as keyof Category;
+
+    return this.categories.find((category) => category[categoryKey] === value);
   }
 }
 
