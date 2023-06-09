@@ -1,11 +1,7 @@
 import { Category } from "../model/Category";
+import { ICategoriesRepository, ICrateCategoryDTO } from "./IcategoriesRepository";
 
-interface ICrateCategoryDTO {
-  name: string;
-  description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
@@ -28,7 +24,7 @@ class CategoriesRepository {
     return this.categories;
   }
 
-  findByField(field: string, value: string): Category | undefined {
+  findByName(field: string, value: string): Category | undefined {
     const categoryKey = field as keyof Category;
 
     return this.categories.find((category) => category[categoryKey] === value);
