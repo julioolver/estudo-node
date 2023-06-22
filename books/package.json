@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@types/typescript": "^2.0.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

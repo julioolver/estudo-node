@@ -1,0 +1,3 @@
+interface IBaseUseCase {
+    execute(): any;
+}

@@ -1,22 +1,16 @@
-import { Router } from "express";
-import { CategoryRepository } from "../modules/books/repositories/CategoryRepository";
-import { CreateCategoryService } from "../modules/books/services/CreateCategoryService";
+import { Router } from "express"
+import { listCategoriesController } from "../modules/books/useCases/listCategories"
+import { createCategoryController } from "../modules/books/useCases/createCategory";
 
-const categoriesRoutes = Router();
-const categoryRepository = new CategoryRepository();
+const categoriesRoutes = Router()
 
+//list all categories
 categoriesRoutes.get("/", (request, response) => {
-  return response.json({
-    message: "Retornando a lista de categorias",
-  });
-});
+    listCategoriesController.handle(request, response);
+})
 
 categoriesRoutes.post("/", (request, response) => {
-  const { name, description } = request.body;
+    return createCategoryController.handle(request, response)
+})
 
-  const createCategoryService = new CreateCategoryService(categoryRepository);
-
-  createCategoryService.execute({ name, description });
-});
-
-export { categoriesRoutes };
+export { categoriesRoutes }
